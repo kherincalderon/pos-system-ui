@@ -52,7 +52,7 @@ const sidebarItems = [
     icon: ShoppingCart,
   },
   {
-    title: 'Caja Registradora',
+    title: 'Cierre de caja',
     href: '/cash-register/closure',
     icon: Calculator,
   },

@@ -46,7 +46,9 @@ export default function POSPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [paymentMethod, setPaymentMethod] = useState<'cash' | 'card' | 'digital' | null>(null);
+  const [paymentMethod, setPaymentMethod] = useState<
+    'cash' | 'card' | 'digital' | null
+  >(null);
 
   // Mock data
   const categories = [
@@ -62,28 +64,32 @@ export default function POSPage() {
       name: 'Café',
       price: 3.99,
       category: 'drinks',
-      image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=128&h=128&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=128&h=128&fit=crop',
     },
     {
       id: '2',
       name: 'Té',
       price: 2.99,
       category: 'drinks',
-      image: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=128&h=128&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=128&h=128&fit=crop',
     },
     {
       id: '3',
       name: 'Sándwich',
       price: 6.99,
       category: 'food',
-      image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=128&h=128&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=128&h=128&fit=crop',
     },
     {
       id: '4',
       name: 'Papas Fritas',
       price: 1.99,
       category: 'snacks',
-      image: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=128&h=128&fit=crop',
+      image:
+        'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=128&h=128&fit=crop',
     },
   ];
 
@@ -125,7 +131,10 @@ export default function POSPage() {
     );
   };
 
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
   const tax = subtotal * 0.1; // 10% tax
   const total = subtotal + tax;
 
@@ -139,10 +148,10 @@ export default function POSPage() {
     // 2. Update inventory
     // 3. Generate receipt
     // 4. Update cash register balance
-    
+
     toast({
-      title: "Venta Completada",
-      description: `Pago procesado por $${total.toFixed(2)}`
+      title: 'Venta Completada',
+      description: `Pago procesado por $${total.toFixed(2)}`,
     });
 
     // Reset cart and payment method
@@ -182,7 +191,9 @@ export default function POSPage() {
             {categories.map((category) => (
               <Button
                 key={category.id}
-                variant={selectedCategory === category.id ? 'default' : 'outline'}
+                variant={
+                  selectedCategory === category.id ? 'default' : 'outline'
+                }
                 onClick={() => setSelectedCategory(category.id)}
                 size="sm"
               >
@@ -211,7 +222,9 @@ export default function POSPage() {
                   <h3 className="font-medium truncate">{product.name}</h3>
                   <Tag className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <p className="text-sm font-semibold">${product.price.toFixed(2)}</p>
+                <p className="text-sm font-semibold">
+                  ${product.price.toFixed(2)}
+                </p>
               </div>
             </Card>
           ))}
@@ -250,7 +263,9 @@ export default function POSPage() {
                         variant="outline"
                         size="icon"
                         className="h-6 w-6"
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
                       >
                         <Minus className="h-3 w-3" />
                       </Button>
@@ -259,7 +274,9 @@ export default function POSPage() {
                         variant="outline"
                         size="icon"
                         className="h-6 w-6"
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
                       >
                         <Plus className="h-3 w-3" />
                       </Button>
